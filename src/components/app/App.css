@@ -3,10 +3,16 @@
   background-color: silver;
 }
 
+.container {
+  margin: 0 auto;
+  width: 40%;
+}
+
 .btn {
   padding: 10px;
   background-color: black;
-  color: white;
+  color: silver;
+  font-weight: bold;
   border-radius: 10px;
   margin-right: 20px;
   text-decoration: none;
@@ -14,4 +20,20 @@
 
 .btn:hover {
   color: darkred;
+}
+
+.card-container {
+  margin-top: 50px;
+  margin-left: 30px;
+  display: inline-block;
+}
+
+.card p {
+  background: linear-gradient(black, red);
+  color: seashell;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 0.85rem;
+  border-radius: 20px;
+  padding: 2px;
 }
