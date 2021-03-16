@@ -17,7 +17,7 @@ export default class TypeList extends Component {
 
   render() {
     return this.state.types.map((type) => (
-      <TypeItem name={type.name} url={type.url} />
+      <TypeItem name={type.name} key={type.url.split("/")[6]} />
     ));
   }
 }
