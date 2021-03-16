@@ -5,8 +5,12 @@ export default class Navbar extends Component {
   render() {
     return (
       <div>
-        <Link to="/pokemons">Pokemons</Link>
-        <Link to="/types">Types</Link>
+        <Link to="/pokemons" className="btn">
+          Pokemons
+        </Link>
+        <Link to="/types" className="btn">
+          Types
+        </Link>
       </div>
     );
   }
