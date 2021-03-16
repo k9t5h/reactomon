@@ -4,22 +4,58 @@ import PokemonItem from "./PokemonItem";
 
 export default class PokemonList extends Component {
   state = {
+    previous: "",
     next: "",
     pokemons: [],
   };
 
-  componentDidMount() {
-    axios.get("https://pokeapi.co/api/v2/pokemon").then((response) =>
+  componentDidMount(url = "https://pokeapi.co/api/v2/pokemon") {
+    axios.get(url).then((response) =>
       this.setState({
+        previous: response.data.previous,
         next: response.data.next,
         pokemons: response.data.results,
       })
     );
   }
 
-  render() {
+  displayPokemonItems() {
     return this.state.pokemons.map((pokemon) => (
-      <PokemonItem name={pokemon.name} url={pokemon.url} />
+      <PokemonItem
+        name={pokemon.name}
+        id={pokemon.url.split("/")[6]}
+        key={pokemon.url.split("/")[6]}
+      />
     ));
+  }
+
+  loadPrevious = (e) => {
+    e.preventDefault();
+    if (this.state.previous !== null) {
+      this.componentDidMount(this.state.previous);
+    }
+  };
+
+  loadNext = (e) => {
+    e.preventDefault();
+    if (this.state.next !== null) {
+      this.componentDidMount(this.state.next);
+    }
+  };
+
+  render() {
+    return (
+      <div>
+        {this.displayPokemonItems()}
+        <div>
+          <a href="/" onClick={this.loadPrevious} className="btn pagination">
+            Previous
+          </a>
+          <a href="/" onClick={this.loadNext} className="btn pagination">
+            Next
+          </a>
+        </div>
+      </div>
+    );
   }
 }
