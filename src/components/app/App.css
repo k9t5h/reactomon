@@ -8,6 +8,10 @@
   width: 40%;
 }
 
+.btn-container {
+  margin-bottom: 50px;
+}
+
 .btn {
   padding: 10px;
   background-color: black;
@@ -23,7 +27,7 @@
 }
 
 .card-container {
-  margin-top: 50px;
+  margin-bottom: 30px;
   margin-left: 30px;
   display: inline-block;
 }
@@ -36,4 +40,17 @@
   font-size: 0.85rem;
   border-radius: 20px;
   padding: 2px;
+}
+
+.type-container {
+  width: 100px;
+  margin: 0 auto;
+  display: inline-block;
+  padding: 10px;
+}
+
+.type {
+  background: linear-gradient(black, green);
+  color: white;
+  padding: 5px;
 }
