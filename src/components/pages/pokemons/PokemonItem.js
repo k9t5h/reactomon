@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ball from "../../images/poke-ball.png";
+import ball from "../../../images/poke-ball.png";
 
 export default class PokemonItem extends Component {
   render() {
