@@ -32,14 +32,19 @@
   display: inline-block;
 }
 
-.card p {
-  background: linear-gradient(black, red);
+.pokemon-item {
+  margin-top: 5px;
+}
+
+.pokemon-item a {
   color: seashell;
+  background: linear-gradient(black, red);
+  text-decoration: none;
+  border-radius: 20px;
+  padding: 2px;
   font-style: italic;
   font-weight: bold;
   font-size: 0.85rem;
-  border-radius: 20px;
-  padding: 2px;
 }
 
 .type-container {
