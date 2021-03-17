@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class TypeItem extends Component {
-  render() {
-    return (
-      <div className="type-container">
-        <div className="type">{this.props.name}</div>
-      </div>
-    );
-  }
+export default function TypeItem(props) {
+  return (
+    <div className="type-container">
+      <div className="type">{props.name}</div>
+    </div>
+  );
 }
