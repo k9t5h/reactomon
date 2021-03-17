@@ -1,61 +1,60 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PokemonItem from "./PokemonItem";
 
-export default class PokemonList extends Component {
-  state = {
+export default function PokemonList() {
+  const [state, setState] = useState({
+    url: "https://pokeapi.co/api/v2/pokemon",
     previous: "",
     next: "",
     pokemons: [],
-  };
+  });
 
-  componentDidMount(url = "https://pokeapi.co/api/v2/pokemon") {
-    axios.get(url).then((response) =>
-      this.setState({
+  useEffect(() => {
+    axios.get(state.url).then((response) =>
+      setState({
         previous: response.data.previous,
         next: response.data.next,
         pokemons: response.data.results,
       })
     );
-  }
+  }, [state.url]);
 
-  displayPokemonItems() {
-    return this.state.pokemons.map((pokemon) => (
+  const displayPokemonItems = () => {
+    return state.pokemons.map((pokemon) => (
       <PokemonItem
         name={pokemon.name}
         id={pokemon.url.split("/")[6]}
         key={pokemon.url.split("/")[6]}
       />
     ));
-  }
+  };
 
-  loadPrevious = (e) => {
+  const loadPrevious = (e) => {
     e.preventDefault();
-    if (this.state.previous !== null) {
-      this.componentDidMount(this.state.previous);
+    if (state.previous !== null) {
+      setState({ ...state, url: state.previous });
     }
   };
 
-  loadNext = (e) => {
+  const loadNext = (e) => {
     e.preventDefault();
-    if (this.state.next !== null) {
-      this.componentDidMount(this.state.next);
+    if (state.next !== null) {
+      setState({ ...state, url: state.next });
     }
   };
 
-  render() {
-    return (
+  return (
+    <div>
+      {displayPokemonItems()}
       <div>
-        {this.displayPokemonItems()}
-        <div>
-          <a href="/" onClick={this.loadPrevious} className="btn pagination">
-            Previous
-          </a>
-          <a href="/" onClick={this.loadNext} className="btn pagination">
-            Next
-          </a>
-        </div>
+        <a href="/" onClick={loadPrevious} className="btn pagination">
+          Previous
+        </a>
+        <a href="/" onClick={loadNext} className="btn pagination">
+          Next
+        </a>
       </div>
-    );
-  }
+    </div>
+  );
 }
