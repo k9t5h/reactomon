@@ -1,33 +1,25 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export default class PokemonItem extends Component {
-  state = {
-    sprite: "",
-  };
+export default function PokemonItem(props) {
+  const [sprite, setSprite] = useState("");
 
-  componentDidMount() {
+  useEffect(() => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${this.props.id}/`)
-      .then((response) =>
-        this.setState({
-          sprite: response.data.sprites.back_default,
-        })
-      );
-  }
+      .get(`https://pokeapi.co/api/v2/pokemon/${props.id}/`)
+      .then((response) => setSprite(response.data.sprites.back_default));
+  }, [props.id]);
 
-  render() {
-    const { id, name } = this.props;
-    return (
-      <div className="card-container">
-        <div className="card">
-          <img alt="poke-ball" src={this.state.sprite} height="75" />
-          <div className="pokemon-item">
-            <Link to={`/pokemon/${id}`}>{name}</Link>
-          </div>
+  const { id, name } = props;
+  return (
+    <div className="card-container">
+      <div className="card">
+        <img alt="poke-ball" src={sprite} height="75" />
+        <div className="pokemon-item">
+          <Link to={`/pokemon/${id}`}>{name}</Link>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
