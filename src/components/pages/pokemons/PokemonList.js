@@ -10,6 +10,8 @@ export default function PokemonList() {
     pokemons: [],
   });
 
+  const [spriteImages, setSpriteImages] = useState({});
+
   useEffect(() => {
     axios.get(state.url).then((response) =>
       setState({
@@ -21,11 +23,24 @@ export default function PokemonList() {
     );
   }, [state.url]);
 
+  useEffect(() => {
+    const spriteImages = new Map();
+    state.pokemons.forEach((pokemon) => {
+      axios.get(pokemon.url).then((response) => {
+        const id = pokemon.url.split("/")[6];
+        spriteImages.set(id, response.data.sprites.back_default);
+      });
+    });
+    setSpriteImages(spriteImages);
+  }, [state.pokemons]);
+
   const displayPokemonItems = () => {
+    console.log("displayPokemonItems executes");
     return state.pokemons.map((pokemon) => (
       <PokemonItem
-        name={pokemon.name}
         id={pokemon.url.split("/")[6]}
+        name={pokemon.name}
+        image={spriteImages.get(pokemon.url.split("/")[6])}
         key={pokemon.url.split("/")[6]}
       />
     ));
