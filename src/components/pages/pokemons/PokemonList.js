@@ -13,6 +13,7 @@ export default function PokemonList() {
   useEffect(() => {
     axios.get(state.url).then((response) =>
       setState({
+        url: state.url,
         previous: response.data.previous,
         next: response.data.next,
         pokemons: response.data.results,
