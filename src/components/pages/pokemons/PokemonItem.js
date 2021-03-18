@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import Card from "../../styles/Card";
+import ItemLink from "../../styles/ItemLink";
 
 export default function PokemonItem(props) {
   const [sprite, setSprite] = useState("");
@@ -13,13 +14,9 @@ export default function PokemonItem(props) {
 
   const { id, name } = props;
   return (
-    <div className="card-container">
-      <div className="card">
-        <img alt="poke-ball" src={sprite} height="75" />
-        <div className="pokemon-item">
-          <Link to={`/pokemon/${id}`}>{name}</Link>
-        </div>
-      </div>
-    </div>
+    <Card>
+      <img alt="sprite back" src={sprite} height="75" />
+      <ItemLink to={`/pokemon/${id}`}>{name}</ItemLink>
+    </Card>
   );
 }
