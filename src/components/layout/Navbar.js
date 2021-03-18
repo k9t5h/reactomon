@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { ThemeContext } from "../contexts/ThemeStore";
 
 const StyledDiv = styled.div`
   margin-left: 50px;
@@ -9,8 +10,8 @@ const StyledDiv = styled.div`
 
 const NavLink = styled(Link)`
   padding: 10px;
-  background-color: black;
-  color: silver;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.text};
   font-weight: bold;
   border-radius: 10px;
   margin-right: 20px;
@@ -22,12 +23,22 @@ const NavLink = styled(Link)`
 `;
 
 export default function Navbar() {
+  const { theme, switchTheme } = useContext(ThemeContext);
+
   return (
     <StyledDiv>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/pokemons">Pokemons</NavLink>
       <NavLink to="/types">Types</NavLink>
-      <NavLink to="#">Theme</NavLink>
+      {theme === "light" ? (
+        <NavLink to="#" onClick={() => switchTheme("dark")}>
+          Theme
+        </NavLink>
+      ) : (
+        <NavLink to="#" onClick={() => switchTheme("light")}>
+          Theme
+        </NavLink>
+      )}
     </StyledDiv>
   );
 }
