@@ -10,7 +10,7 @@ export default function PokemonList() {
     pokemons: [],
   });
 
-  const [spriteImages, setSpriteImages] = useState({});
+  const [spriteImages, setSpriteImages] = useState(new Map());
 
   useEffect(() => {
     axios.get(state.url).then((response) =>
@@ -29,13 +29,14 @@ export default function PokemonList() {
       axios.get(pokemon.url).then((response) => {
         const id = pokemon.url.split("/")[6];
         spriteImages.set(id, response.data.sprites.back_default);
+        if (state.pokemons.length === spriteImages.size) {
+          setSpriteImages(spriteImages);
+        }
       });
     });
-    setSpriteImages(spriteImages);
   }, [state.pokemons]);
 
   const displayPokemonItems = () => {
-    console.log("displayPokemonItems executes");
     return state.pokemons.map((pokemon) => (
       <PokemonItem
         id={pokemon.url.split("/")[6]}
