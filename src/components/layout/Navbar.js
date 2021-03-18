@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
+  margin-left: 50px;
   margin-bottom: 50px;
 `;
 
@@ -26,6 +27,7 @@ export default function Navbar() {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/pokemons">Pokemons</NavLink>
       <NavLink to="/types">Types</NavLink>
+      <NavLink to="#">Theme</NavLink>
     </StyledDiv>
   );
 }
