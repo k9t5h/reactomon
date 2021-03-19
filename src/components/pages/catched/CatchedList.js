@@ -11,7 +11,7 @@ const BallContainer = styled.div`
 `;
 
 const PokemonContainer = styled.div`
-  width: 500px;
+  width: 600px;
   margin: 0 auto;
   margin-top: 20px;
 `;
