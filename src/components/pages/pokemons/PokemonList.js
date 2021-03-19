@@ -38,17 +38,6 @@ export default function PokemonList() {
     });
   }, [state.pokemons]);
 
-  const displayPokemonItems = () => {
-    return state.pokemons.map((pokemon) => (
-      <PokemonItem
-        id={pokemon.url.split("/")[6]}
-        name={pokemon.name}
-        image={spriteImages.get(pokemon.url.split("/")[6])}
-        key={pokemon.url.split("/")[6]}
-      />
-    ));
-  };
-
   const loadPrevious = (e) => {
     e.preventDefault();
     if (state.previous !== null) {
@@ -63,9 +52,19 @@ export default function PokemonList() {
     }
   };
 
+  const pokemonItems = state.pokemons.map((pokemon) => (
+    <PokemonItem
+      id={pokemon.url.split("/")[6]}
+      name={pokemon.name}
+      image={spriteImages.get(pokemon.url.split("/")[6])}
+      key={pokemon.url.split("/")[6]}
+      data-for={pokemon.url.split("/")[6]}
+    />
+  ));
+
   return (
     <div>
-      <Container>{displayPokemonItems()}</Container>
+      <Container>{pokemonItems}</Container>
       <div>
         <Pagination href="/" onClick={loadPrevious}>
           Previous

@@ -8,6 +8,7 @@ import CatchedList from "../pages/catched/CatchedList";
 import PokemonDetail from "../pages/PokemonDetail";
 import Theme from "../styles/Theme";
 import { ThemeStore } from "../contexts/ThemeStore";
+import { PokemonStore } from "../contexts/PokemonStore";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -22,11 +23,13 @@ export default function App() {
         <Router>
           <Container>
             <Header />
-            <Navbar />
-            <Route path="/pokemons" component={PokemonList} />
+            <PokemonStore>
+              <Navbar />
+              <Route path="/pokemons" component={PokemonList} />
+              <Route path="/catched" component={CatchedList} />
+              <Route path="/pokemon/:id" component={PokemonDetail} />
+            </PokemonStore>
             <Route path="/types" component={TypeList} />
-            <Route path="/catched" component={CatchedList} />
-            <Route path="/pokemon/:id" component={PokemonDetail} />
           </Container>
         </Router>
       </Theme>

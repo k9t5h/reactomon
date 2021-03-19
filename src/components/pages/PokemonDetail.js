@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Table, TableHeader, TableData } from "../styles/Table";
+import { PokemonContext } from "../contexts/PokemonStore";
 
 export default function PokemonDetail(props) {
   const [state, setState] = useState({
@@ -71,9 +72,16 @@ export default function PokemonDetail(props) {
     stats,
     types,
   } = state;
+  const { catchPokemon } = useContext(PokemonContext);
   return (
     <div className="detail-container">
-      <img src={sprite} alt="sprite front" width="200" />
+      <img
+        src={sprite}
+        alt="sprite front"
+        width="200"
+        onClick={() => catchPokemon(id)}
+        style={{ cursor: "pointer" }}
+      />
       <Table>
         <thead>
           <tr>

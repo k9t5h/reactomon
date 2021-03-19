@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeContext } from "../contexts/ThemeStore";
+import { PokemonContext } from "../contexts/PokemonStore";
 
 const StyledDiv = styled.div`
-  margin-left: 50px;
-  margin-bottom: 50px;
+  margin: 5px 0 50px 50px;
 `;
 
 const NavLink = styled(Link)`
@@ -25,12 +25,13 @@ const NavLink = styled(Link)`
 
 export default function Navbar() {
   const { theme, switchTheme } = useContext(ThemeContext);
+  const { catchedPokemons } = useContext(PokemonContext);
 
   return (
     <StyledDiv>
       <NavLink to="/pokemons">Pokemons</NavLink>
       <NavLink to="/types">Types</NavLink>
-      <NavLink to="/catched">Catched</NavLink>
+      <NavLink to="/catched">Catched ({catchedPokemons.length})</NavLink>
       {theme === "light" ? (
         <NavLink to="#" onClick={() => switchTheme("dark")}>
           Theme
