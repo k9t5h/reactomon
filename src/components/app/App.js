@@ -4,6 +4,7 @@ import Header from "../layout/Header";
 import Navbar from "../layout/Navbar";
 import PokemonList from "../pages/pokemons/PokemonList";
 import TypeList from "../pages/types/TypeList";
+import CatchedList from "../pages/catched/CatchedList";
 import PokemonDetail from "../pages/PokemonDetail";
 import Theme from "../styles/Theme";
 import { ThemeStore } from "../contexts/ThemeStore";
@@ -24,6 +25,7 @@ export default function App() {
             <Navbar />
             <Route path="/pokemons" component={PokemonList} />
             <Route path="/types" component={TypeList} />
+            <Route path="/catched" component={CatchedList} />
             <Route path="/pokemon/:id" component={PokemonDetail} />
           </Container>
         </Router>

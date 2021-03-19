@@ -28,9 +28,9 @@ export default function Navbar() {
 
   return (
     <StyledDiv>
-      <NavLink to="/">Home</NavLink>
       <NavLink to="/pokemons">Pokemons</NavLink>
       <NavLink to="/types">Types</NavLink>
+      <NavLink to="/catched">Catched</NavLink>
       {theme === "light" ? (
         <NavLink to="#" onClick={() => switchTheme("dark")}>
           Theme
