@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Container from "../../styles/Container";
 import TypeItem from "./TypeItem";
 
 export default function TypeList() {
@@ -11,7 +12,11 @@ export default function TypeList() {
       .then((response) => setTypes(response.data.results));
   }, []);
 
-  return types.map((type) => (
-    <TypeItem name={type.name} key={type.url.split("/")[6]} />
-  ));
+  const displayTypeItems = () => {
+    return types.map((type) => (
+      <TypeItem name={type.name} key={type.url.split("/")[6]} />
+    ));
+  };
+
+  return <Container>{displayTypeItems()}</Container>;
 }

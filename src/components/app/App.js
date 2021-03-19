@@ -7,23 +7,25 @@ import TypeList from "../pages/types/TypeList";
 import PokemonDetail from "../pages/PokemonDetail";
 import Theme from "../styles/Theme";
 import { ThemeStore } from "../contexts/ThemeStore";
+import styled from "styled-components";
 
-import "./App.css";
+const Container = styled.div`
+  margin: 0 auto;
+  width: 800px;
+`;
 
 export default function App() {
   return (
     <ThemeStore>
       <Theme>
         <Router>
-          <div className="App">
-            <div className="container">
-              <Header />
-              <Navbar />
-              <Route path="/pokemons" component={PokemonList} />
-              <Route path="/types" component={TypeList} />
-              <Route path="/pokemon/:id" component={PokemonDetail} />
-            </div>
-          </div>
+          <Container>
+            <Header />
+            <Navbar />
+            <Route path="/pokemons" component={PokemonList} />
+            <Route path="/types" component={TypeList} />
+            <Route path="/pokemon/:id" component={PokemonDetail} />
+          </Container>
         </Router>
       </Theme>
     </ThemeStore>

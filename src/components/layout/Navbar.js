@@ -9,13 +9,14 @@ const StyledDiv = styled.div`
 `;
 
 const NavLink = styled(Link)`
-  padding: 10px;
-  background-color: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.text};
+  padding: 8px;
+  background-color: black;
+  color: silver;
   font-weight: bold;
-  border-radius: 10px;
   margin-right: 20px;
   text-decoration: none;
+  border: 1px solid ${(props) => props.theme.borderColor};
+  border-radius: 11px;
 
   :hover {
     color: darkred;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Table, TableHeader, TableData } from "../styles/Table";
 
 export default function PokemonDetail(props) {
   const [state, setState] = useState({
@@ -73,32 +74,32 @@ export default function PokemonDetail(props) {
   return (
     <div className="detail-container">
       <img src={sprite} alt="sprite front" width="200" />
-      <table>
+      <Table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Height</th>
-            <th>Weight</th>
-            <th>Experience</th>
-            <th>Abilities</th>
-            <th className="fit-width">Stat Name - Base Stat</th>
-            <th>Types</th>
+            <TableHeader>ID</TableHeader>
+            <TableHeader>Name</TableHeader>
+            <TableHeader>Height</TableHeader>
+            <TableHeader>Weight</TableHeader>
+            <TableHeader>Experience</TableHeader>
+            <TableHeader>Abilities</TableHeader>
+            <TableHeader>Stat Name - Base Stat</TableHeader>
+            <TableHeader>Types</TableHeader>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>{id}</td>
-            <td>{name}</td>
-            <td>{height}</td>
-            <td>{weight}</td>
-            <td>{experience}</td>
-            <td>{abilities}</td>
-            <td>{stats}</td>
-            <td className="fit-width">{types}</td>
+            <TableData>{id}</TableData>
+            <TableData>{name}</TableData>
+            <TableData>{height}</TableData>
+            <TableData>{weight}</TableData>
+            <TableData>{experience}</TableData>
+            <TableData>{abilities}</TableData>
+            <TableData>{stats}</TableData>
+            <TableData>{types}</TableData>
           </tr>
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }

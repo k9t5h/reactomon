@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PokemonItem from "./PokemonItem";
 import Pagination from "../../styles/Pagination";
+import Container from "../../styles/Container";
 
 export default function PokemonList() {
   const [state, setState] = useState({
@@ -64,7 +65,7 @@ export default function PokemonList() {
 
   return (
     <div>
-      {displayPokemonItems()}
+      <Container>{displayPokemonItems()}</Container>
       <div>
         <Pagination href="/" onClick={loadPrevious}>
           Previous

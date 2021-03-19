@@ -5,17 +5,24 @@ import { ThemeContext } from "../contexts/ThemeStore";
 const themes = {
   dark: {
     background: "black",
-    text: "silver",
+    grayscale: 1,
+    tableText: "silver",
+    borderColor: "silver",
   },
   light: {
-    background: "yellow",
-    text: "blue",
+    background: "silver",
+    grayscale: 0,
+    tableText: "black",
+    borderColor: "black",
   },
 };
 
 const GlobalStyle = createGlobalStyle`
     * {
+      text-align: center;
+      background-color: ${(props) => props.theme.background};
       transition: all 0.5s;
+      filter: grayscale(${(props) => props.theme.grayscale})
     }
   `;
 
