@@ -58,7 +58,6 @@ export default function PokemonList() {
       name={pokemon.name}
       image={spriteImages.get(pokemon.url.split("/")[6])}
       key={pokemon.url.split("/")[6]}
-      data-for={pokemon.url.split("/")[6]}
     />
   ));
 
