@@ -6,7 +6,7 @@ import pokeball from "../../../images/pokeball.png";
 import Container from "../../styles/Container";
 
 const BallContainer = styled.div`
-  color: black;
+  color: ${(props) => props.theme.text};
   font-weight: bold;
 `;
 

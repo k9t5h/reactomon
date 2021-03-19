@@ -7,13 +7,13 @@ const Table = styled.table`
 const TableHeader = styled.th`
   border: 1px solid #999;
   padding: 0.5rem;
-  color: ${(props) => props.theme.tableText};
+  color: ${(props) => props.theme.text};
 `;
 
 const TableData = styled.td`
   border: 1px solid #999;
   padding: 0.5rem;
-  color: ${(props) => props.theme.tableText};
+  color: ${(props) => props.theme.text};
 `;
 
 export { Table, TableHeader, TableData };

@@ -64,12 +64,12 @@ export default function PokemonList() {
   return (
     <div>
       <Container>{pokemonItems}</Container>
-      <div>
+      <div style={{ marginTop: "20px" }}>
         <Pagination href="/" onClick={loadPrevious}>
-          Previous
+          &lt; Prev
         </Pagination>
         <Pagination href="/" onClick={loadNext}>
-          Next
+          Next &gt;
         </Pagination>
       </div>
     </div>

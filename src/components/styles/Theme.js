@@ -6,13 +6,13 @@ const themes = {
   dark: {
     background: "black",
     grayscale: 1,
-    tableText: "silver",
+    text: "silver",
     borderColor: "silver",
   },
   light: {
     background: "silver",
     grayscale: 0,
-    tableText: "black",
+    text: "black",
     borderColor: "black",
   },
 };
